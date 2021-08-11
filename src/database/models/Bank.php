@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Province Model.
  */
-class Province extends Model
+class Bank extends Model
 {
     // use ProvinceTrait;
     /**
