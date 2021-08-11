@@ -3,6 +3,14 @@
     "description": "List Bank di Indonesia",
     "type": "liblary",
     "license": "MIT",
+    "keywords": [
+        "laravel",
+        "php",
+        "csv",
+        "indonesia",
+        "bank",
+        "nama bank"
+    ],
     "authors": [
         {
             "name": "Andri Desmana",
