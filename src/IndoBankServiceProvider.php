@@ -10,7 +10,7 @@
 namespace Andes2912\IndoBank;
 
 use Illuminate\Support\ServiceProvider;
-use AzisHapidin\IndoBank\IndoBankPublishCommand;
+use Andes2912\IndoBank\IndoBankPublishCommand;
 
 /**
  * IndoBank Service Provider
