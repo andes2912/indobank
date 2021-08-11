@@ -80,7 +80,7 @@ Anda bisa gunakan class dibawah seperti model pada umum-nya.
 use App\Models\Bank;
 
 // Get semua data
-$provinces = Bank::all();
+$bank = Bank::all();
 
 // Cari berdasarkan nama bank
 $bank = Bank::where('nama_bank', 'BANK BRI')->first();
