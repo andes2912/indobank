@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Andes2912\IndoBank\RawDataGetter;
 use Illuminate\Support\Facades\DB;
 
-class IndoBankProvinceSeeder extends Seeder
+class IndoBankSeeder extends Seeder
 {
     /**
      * Run the database seeds.
