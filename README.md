@@ -50,7 +50,7 @@ Jalankan perintah dibawah di Command Line:
 php artisan indobank:publish
 ``` 
   
-Saat perintah diatas dijalankan, indoregion akan menyalin:
+Saat perintah diatas dijalankan, indobank akan menyalin:
 
 * Files migration dari ```/packages/andes2912/indobank/src/database/migrations``` ke ```/database/migrations```
 * Files seeder dari ```/packages/andes2912/indobank/src/database/seeds``` ke ```/database/seeds```
