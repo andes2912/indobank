@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the IndoRegion package.
+ *
+ * (c) Andri Desmana <andridesmana.pw | andridesmana29@gmail.com>
+ *
+ */
+
 namespace Andes2912\IndoBank;
 
 use Illuminate\Console\Command;

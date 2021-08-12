@@ -3,7 +3,7 @@
 /*
  * This file is part of the IndoRegion package.
  *
- * (c) Azis Hapidin <azishapidin.com | azishapidin@gmail.com>
+ * (c) Andri Desmana <andridesmana.pw | andridesmana29@gmail.com>
  *
  */
 
