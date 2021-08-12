@@ -1,10 +1,10 @@
-# andes2912/indo-bank
+# andes2912/indobank
 [![Latest Stable Version](http://poser.pugx.org/andes2912/indobank/v)](https://packagist.org/packages/andes2912/indobank) 
 [![Total Downloads](http://poser.pugx.org/andes2912/indobank/downloads)](https://packagist.org/packages/andes2912/indobank) 
 [![Latest Unstable Version](http://poser.pugx.org/andes2912/indobank/v/unstable)](https://packagist.org/packages/andes2912/indobank) 
 [![License](http://poser.pugx.org/andes2912/indobank/license)](https://packagist.org/packages/andes2912/indobank)
 
-```andes2912/indo-bank``` adalah sebuah package Laravel untuk menyimpan data Nama Bank yang ada Indonesia. Package akan menambahkan migrations, seeder (untuk import data ke database) dan Model pada project Anda.
+```andes2912/indobank``` adalah sebuah package Laravel untuk menyimpan data Nama Bank yang ada di Indonesia. Package akan menambahkan migrations, seeder (untuk import data ke database) dan Model pada project Anda.
 
 Semua data akan disimpan di database, untuk mengambil data tersebut sama dengan mengambil data lewat Model pada umum-nya (Lihat bagian Usage).
 
@@ -14,14 +14,14 @@ Data ini diambil dari situs FLIP (https://flip.id/kode-bank/) pada 11 Agustus 20
 
 Buka Command Line kemudian jalankan perintah dibawah untuk melakukan instalasi package:
 ```
-composer require andes2912/indo-bank
+composer require andes2912/indobank
 ```
 
 ## Supported Versions
 
 | Laravel Version | Version | Composer Installation |
 |---- |----|----|
-| 6,7,8 | >= 0.3 | ```composer require andes2912/indo-bank``` |
+| 6,7,8 | >= 0.3 | ```composer require andes2912/indobank``` |
 
 ### Register Service Provider
 
