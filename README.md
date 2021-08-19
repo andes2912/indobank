@@ -1,5 +1,3 @@
-# IndoBank
-
 <img src="https://banners.beyondco.de/Laravel%20List%20Name%20Bank%20Indonesia.png?theme=light&packageManager=composer+require&packageName=andes2912%2Findobank&pattern=architect&style=style_1&description=Package+Laravel+Daftar+Bank+di+Indonesia&md=1&showWatermark=0&fontSize=100px&images=credit-card" />
 
 [![Latest Stable Version](http://poser.pugx.org/andes2912/indobank/v)](https://packagist.org/packages/andes2912/indobank) 
