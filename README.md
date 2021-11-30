@@ -1,4 +1,5 @@
-# andes2912/indobank
+<img src="https://banners.beyondco.de/Laravel%20List%20Name%20Bank%20Indonesia.png?theme=light&packageManager=composer+require&packageName=andes2912%2Findobank&pattern=architect&style=style_1&description=Package+Laravel+Daftar+Bank+di+Indonesia&md=1&showWatermark=0&fontSize=100px&images=credit-card" />
+
 [![Latest Stable Version](http://poser.pugx.org/andes2912/indobank/v)](https://packagist.org/packages/andes2912/indobank) 
 [![Total Downloads](http://poser.pugx.org/andes2912/indobank/downloads)](https://packagist.org/packages/andes2912/indobank) 
 [![Latest Unstable Version](http://poser.pugx.org/andes2912/indobank/v/unstable)](https://packagist.org/packages/andes2912/indobank) 
@@ -50,7 +51,7 @@ Jalankan perintah dibawah di Command Line:
 php artisan indobank:publish
 ``` 
   
-Saat perintah diatas dijalankan, indoregion akan menyalin:
+Saat perintah diatas dijalankan, indobank akan menyalin:
 
 * Files migration dari ```/packages/andes2912/indobank/src/database/migrations``` ke ```/database/migrations```
 * Files seeder dari ```/packages/andes2912/indobank/src/database/seeds``` ke ```/database/seeds```
