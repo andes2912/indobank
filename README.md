@@ -22,7 +22,7 @@ composer require andes2912/indobank
 
 | Laravel Version | Version | Composer Installation |
 |---- |----|----|
-| 6,7,8 | >= 0.7 | ```composer require andes2912/indobank``` |
+| 6,7,8,9 | >= 0.7 | ```composer require andes2912/indobank``` |
 
 ### Register Service Provider
 
