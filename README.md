@@ -2,8 +2,10 @@
 
 [![Latest Stable Version](http://poser.pugx.org/andes2912/indobank/v)](https://packagist.org/packages/andes2912/indobank) 
 [![Total Downloads](http://poser.pugx.org/andes2912/indobank/downloads)](https://packagist.org/packages/andes2912/indobank) 
-[![Latest Unstable Version](http://poser.pugx.org/andes2912/indobank/v/unstable)](https://packagist.org/packages/andes2912/indobank) 
 [![License](http://poser.pugx.org/andes2912/indobank/license)](https://packagist.org/packages/andes2912/indobank)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andes2912/indobank/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andes2912/indobank/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/andes2912/indobank/badges/build.png?b=master)](https://scrutinizer-ci.com/g/andes2912/indobank/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/andes2912/indobank/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 ```andes2912/indobank``` adalah sebuah package Laravel untuk menyimpan data Nama Bank yang ada di Indonesia. Package akan menambahkan migrations, seeder (untuk import data ke database) dan Model pada project Anda.
 
