@@ -1,7 +1,7 @@
 {
     "name": "andes2912/indobank",
     "description": "List Bank of Indonesian",
-    "type": "liblary",
+    "type": "library",
     "license": "MIT",
     "keywords": [
         "laravel",
@@ -18,27 +18,35 @@
         }
     ],
     "require": {
-        "parsecsv/php-parsecsv": "^1.1"
+        "php": "^7.4|^8.0",
+        "parsecsv/php-parsecsv": "^1.1",
+        "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
+        "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0|^12.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.8.*"
+        "phpunit/phpunit": "^9.0|^10.0|^11.0",
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0"
     },
     "autoload": {
         "psr-4": {
             "Andes2912\\IndoBank\\": "src/"
-        },
-        "files": [
-            "src/RawDataGetter.php"
-        ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Andes2912\\IndoBank\\Tests\\": "tests/"
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "Andes2912\\IndoBank\\IndoBankServiceProvider"
             ],
-            "aliases": {}
+            "aliases": {
+                "IndoBank": "Andes2912\\IndoBank\\IndoBank"
+            }
         }
     },
-    "homepage": "https://andridesmana.pw/",
+    "homepage": "https://andridesmana.dev/",
     "prefer-stable": true
 }

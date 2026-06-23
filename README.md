@@ -11,7 +11,9 @@
 
 Semua data akan disimpan di database, untuk mengambil data tersebut sama dengan mengambil data lewat Model pada umum-nya (Lihat bagian Usage).
 
-Data ini diambil dari situs FLIP (https://flip.id/kode-bank/) pada 11 Agustus 2021 & ATM Bersama (http://www.atmbersama.com/layanan).
+Data diambil dari **Tabel Sandi Bank resmi BCA per 31 Maret 2026** (https://pustaka.bca.co.id/bisnis/layanan/e-banking-bisnis/klikbca-bisnis/data-bank-update-31-maret-2026.pdf). Berisi 123 entri bank umum + Unit Usaha Syariah, termasuk bank digital terbaru (Super Bank, Krom Bank, Bank Saqu, Allo Bank, Bank Jago, dll).
+
+Catatan: Beberapa kode bank (`sandi_bank`) tidak unik — misalnya `022` digunakan oleh Bank CIMB Niaga konvensional & Unit Usaha Syariah-nya. Karena itu kolom `sandi_bank` di-index, bukan unique.
 
 ## Quick Instalation
 
@@ -24,7 +26,7 @@ composer require andes2912/indobank
 
 | Laravel Version | Version | Composer Installation |
 |---- |----|----|
-| 6,7,8,9 | >= 0.7 | ```composer require andes2912/indobank``` |
+| 6, 7, 8, 9, 10, 11, 12 | >= 0.8 | ```composer require andes2912/indobank``` |
 
 ### Register Service Provider
 
@@ -47,22 +49,37 @@ $app->register(Andes2912\IndoBank\IndoBankServiceProvider::class);
 ```
 
 ### Publish File
-Jalankan perintah dibawah di Command Line:
+
+Cara yang direkomendasikan (standard Laravel `vendor:publish`):
+
+```
+# Publish semua (migrations + seeders + model)
+php artisan vendor:publish --tag=indobank
+
+# Atau publish per-bagian:
+php artisan vendor:publish --tag=indobank-migrations
+php artisan vendor:publish --tag=indobank-seeders
+php artisan vendor:publish --tag=indobank-models
+```
+
+Atau cara lama (masih didukung untuk backward-compatibility):
 
 ```
 php artisan indobank:publish
-``` 
-  
+```
+
 Saat perintah diatas dijalankan, indobank akan menyalin:
 
-* Files migration dari ```/packages/andes2912/indobank/src/database/migrations``` ke ```/database/migrations```
-* Files seeder dari ```/packages/andes2912/indobank/src/database/seeds``` ke ```/database/seeds```
-* Files model dari ```/packages/andes2912/indobank/src/database/models``` ke ```/app/Models```
+* Files migration dari ```/vendor/andes2912/indobank/src/database/migrations``` ke ```/database/migrations```
+* Files seeder dari ```/vendor/andes2912/indobank/src/database/seeders``` ke ```/database/seeders```
+* Files model dari ```/vendor/andes2912/indobank/src/database/models``` ke ```/app/Models```
 
 Setelah itu jalankan perintah dibawah:
 ```
 composer dump-autoload
 ```
+
+> Catatan: package ini juga otomatis `loadMigrationsFrom()`, jadi Anda bisa langsung `php artisan migrate` tanpa publish jika tidak perlu meng-custom migration.
 
 ### Migrate and Seeder
 Jalankan perintah dibawah untuk menjalankan migration dan seeder:
@@ -89,4 +106,25 @@ $bank = Bank::all();
 $bank = Bank::where('nama_bank', 'BANK BRI')->first();
 $bank = Bank::where('nama_bank', 'LIKE', '%BANK BRI%')->first();
 
+```
+
+## Tanpa Database (CSV Helper)
+
+Jika Anda tidak ingin menggunakan database (mis. hanya butuh list bank di form), package ini juga menyediakan helper yang membaca langsung dari CSV bawaan:
+
+```
+<?php
+
+use Andes2912\IndoBank\IndoBank;
+
+$indo = app(IndoBank::class);
+
+// Semua bank
+$banks = $indo->getBanks();
+
+// Pencarian (partial, case-insensitive)
+$result = $indo->searchBanks('BRI');
+
+// Pencarian exact berdasarkan kolom
+$bca = $indo->findBank('sandi_bank', '014');
 ```

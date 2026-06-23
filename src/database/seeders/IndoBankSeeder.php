@@ -10,24 +10,30 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Andes2912\IndoBank\RawDataGetter;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Andes2912\IndoBank\RawDataGetter;
 
 class IndoBankSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
-     * @deprecated
+     * Idempotent: truncates the `banks` table first so re-running won't
+     * leave duplicate rows. Some `sandi_bank` codes are intentionally
+     * shared across different banks (e.g. CIMB Niaga & CIMB Niaga Syariah
+     * both use 022), so we cannot safely use upsert on `sandi_bank` alone.
      *
      * @return void
      */
     public function run()
     {
-        // Get Data
-        $banks = RawDataGetter::getBanks();
+        Schema::disableForeignKeyConstraints();
+        DB::table('banks')->truncate();
+        Schema::enableForeignKeyConstraints();
 
-        // Insert Data to Database
-        DB::table('banks')->insert($banks);
+        foreach (array_chunk(RawDataGetter::getBanks(), 100) as $chunk) {
+            DB::table('banks')->insert($chunk);
+        }
     }
 }

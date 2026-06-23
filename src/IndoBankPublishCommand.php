@@ -12,6 +12,12 @@ namespace Andes2912\IndoBank;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
+/**
+ * Legacy publish command kept for backward compatibility.
+ *
+ * Prefer the standard Laravel approach:
+ *     php artisan vendor:publish --tag=indobank
+ */
 class IndoBankPublishCommand extends Command
 {
     /**
@@ -26,48 +32,42 @@ class IndoBankPublishCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Publish IndoBank assets from vendor packages';
-
-    /**
-     * Compatiblity for Lumen 5.5.
-     *
-     * @return void
-     */
-    public function handle()
-    {
-        $this->fire();
-    }
+    protected $description = 'Publish IndoBank assets (migrations, seeders, model) to the host application';
 
     /**
      * Execute the console command.
      *
      * @return void
      */
-    public function fire()
+    public function handle()
     {
         $this->publishModels();
         $this->publishMigrations();
         $this->publishSeeds();
 
-        $this->info("Publishing IndoBank complete");
+        $this->info('Publishing IndoBank complete');
     }
 
-
     /**
-     * Publish the directory to the given directory.
+     * Copy files from a source directory into a destination directory,
+     * creating the destination if necessary.
      *
      * @param  string  $from
      * @param  string  $to
      * @return void
      */
-    protected function publishDirectory($from , $to)
+    protected function publishDirectory($from, $to)
     {
-        $exclude = array('..' , '.' , '.DS_Store');
-        $source = array_diff(scandir($from) , $exclude);
+        if (! File::isDirectory($to)) {
+            File::makeDirectory($to, 0755, true, true);
+        }
+
+        $exclude = ['..', '.', '.DS_Store'];
+        $source  = array_diff(scandir($from), $exclude);
 
         foreach ($source as $item) {
-            $this->info("Copying file: " . $to . $item);
-            File::copy($from . $item , $to . $item);
+            $this->info('Copying file: '.$to.$item);
+            File::copy($from.$item, $to.$item);
         }
     }
 
@@ -78,13 +78,7 @@ class IndoBankPublishCommand extends Command
      */
     protected function publishModels()
     {
-        $targetPath = app()->path()."/Models/";
-
-        if (!File::isDirectory($targetPath)){
-            File::makeDirectory($targetPath, 0777, true, true);
-        }
-
-        $this->publishDirectory(__DIR__.'/database/models/', app()->path()."/Models/");
+        $this->publishDirectory(__DIR__.'/database/models/', app()->path().'/Models/');
     }
 
     /**
@@ -94,7 +88,7 @@ class IndoBankPublishCommand extends Command
      */
     protected function publishMigrations()
     {
-        $this->publishDirectory(__DIR__.'/database/migrations/', app()->databasePath()."/migrations/");
+        $this->publishDirectory(__DIR__.'/database/migrations/', app()->databasePath().'/migrations/');
     }
 
     /**
@@ -104,6 +98,6 @@ class IndoBankPublishCommand extends Command
      */
     protected function publishSeeds()
     {
-        $this->publishDirectory(__DIR__.'/database/seeders/', app()->databasePath()."/seeders/");
+        $this->publishDirectory(__DIR__.'/database/seeders/', app()->databasePath().'/seeders/');
     }
 }
