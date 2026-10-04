@@ -24,17 +24,19 @@ composer require andes2912/indobank
 
 ## Supported Versions
 
-| Laravel Version | Version | Composer Installation |
+| Laravel Version | PHP | Testbench (dev) |
 |---- |----|----|
-| 6, 7, 8, 9, 10, 11, 12 | >= 0.8 | ```composer require andes2912/indobank``` |
+| 8, 9, 10, 11, 12, 13 | ^7.4 \| ^8.0 | 6, 7, 8, 9, 10, 11 |
+
+Seluruh test suite (termasuk migration tabel `banks`) sudah dijalankan pada Laravel 8 sampai 13 menggunakan PHP 8.3.
+
+> Laravel 6 dan 7 tidak lagi didukung, karena migration menggunakan anonymous class (`return new class extends Migration`) yang baru tersedia mulai Laravel 8. Laravel 8 sampai 11 sudah tidak menerima security update dari tim Laravel, jadi Composer dapat menampilkan peringatan advisory saat instalasi.
 
 ### Register Service Provider
 
 #### Laravel
 
-Jika Anda menggunakan Laravel versi 5.5 keatas Anda bisa skip bagian ini karena package indo-bank sudah menggunakan Package Auto Discovery.  
-  
-Tapi jika kebetulan Project yang Anda kerjakan masih menggunakan versi dibawah 5.5 maka silahkan untuk membuka file **config/app.php** lalu tambahkan Class ```IndoBankServiceProvider``` kedalam array Service Providers:
+Package ini menggunakan Package Auto Discovery, jadi Anda bisa skip bagian ini. Jika Anda menonaktifkan auto discovery, buka **config/app.php** (atau **bootstrap/providers.php** pada Laravel 11+) lalu tambahkan Class ```IndoBankServiceProvider``` kedalam array Service Providers:
 ```
 // Provider Lain
 Andes2912\IndoBank\IndoBankServiceProvider::class,
