@@ -15,6 +15,10 @@ Data diambil dari **Tabel Sandi Bank resmi BCA per 31 Maret 2026** (https://pust
 
 Catatan: Beberapa kode bank (`sandi_bank`) tidak unik — misalnya `022` digunakan oleh Bank CIMB Niaga konvensional & Unit Usaha Syariah-nya. Karena itu kolom `sandi_bank` di-index, bukan unique.
 
+Versi bahasa lain (data sama, tanpa database):
+* Go: [andes2912/indobank-go](https://github.com/andes2912/indobank-go)
+* Flutter/Dart: [andes2912/indobank-dart](https://github.com/andes2912/indobank-dart)
+
 ## Quick Instalation
 
 Buka Command Line kemudian jalankan perintah dibawah untuk melakukan instalasi package:
